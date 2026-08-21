@@ -16,7 +16,7 @@ services:
       timeout: 5s
       retries: 10
 
-  app:
+  next-js-sample-app:
     build: .
     expose:
       - "3000"
@@ -37,7 +37,7 @@ services:
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
-      - app
+      - next-js-sample-app
 
 volumes:
   postgres_data:
