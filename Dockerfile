@@ -3,9 +3,6 @@ ARG NODE_VERSION=22-bookworm-slim
 FROM node:${NODE_VERSION} AS dependencies
 WORKDIR /app
 
-# Lockfile was generated with npm 11. Node 22 ships npm 10, which fails
-# `npm ci` with "Missing: @emnapi/runtime / @emnapi/core from lock file".
-RUN npm install -g npm@11
 COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 
